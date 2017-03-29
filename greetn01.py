@@ -13,9 +13,13 @@ class Mycog:
 
         # Your code will go here
         await self.bot.say("Hello there, " + user.mention + "!")
-        if user.status == discord.Status.dnd :
+        if user.status == discord.Status.online :
+        	await self.bot.say("You are online.")
+        elif user.status == discord.Status.dnd :
         	await self.bot.say("You are busy.")
-        else:
-        	await self.bot.say("You are not busy.")
+        elif user.status == discord.Status.idle :
+            await self.bot.say("You are idle.")
+        else :
+            await self.bot.say("You are offline.")
 def setup(bot):
     bot.add_cog(Mycog(bot))
